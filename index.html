@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jayakanthan · posixplus</title>
+<meta name="description" content="Jayakanthan (@posixplus) — projects, experiments, and live sites on GitHub." />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" onerror="this.remove()">
+<style>
+  :root{
+    --dark:#141413; --cream:#faf9f5; --panel:#ffffff; --gray:#56544e; --faint:#8a877e;
+    --border:#e3e0d6; --orange:#d97757; --orange-dk:#c2613f; --blue:#6a9bcc; --green:#788c5d;
+    --radius:16px; --shadow:0 4px 18px rgba(20,20,19,.07);
+    --head:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --body:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:#1f1e1c;font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--head);font-weight:600;color:var(--dark);letter-spacing:-.01em;margin:0}
+  a{color:var(--orange-dk);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+
+  /* hero */
+  .hero{padding:74px 0 38px;display:flex;gap:30px;align-items:center;flex-wrap:wrap}
+  .avatar{width:118px;height:118px;border-radius:50%;border:3px solid var(--panel);box-shadow:var(--shadow);object-fit:cover;background:var(--border)}
+  .hero-txt{flex:1;min-width:260px}
+  .hero h1{font-size:38px;margin-bottom:4px}
+  .handle{color:var(--orange);font-family:var(--head);font-weight:600;font-size:15px}
+  .bio{font-size:18px;color:var(--gray);margin:14px 0 18px;max-width:600px}
+  .btns{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--head);font-weight:500;font-size:14px;
+    border:1px solid var(--border);background:var(--panel);color:#1f1e1c;padding:9px 16px;border-radius:10px;transition:.15s}
+  .btn:hover{border-color:var(--orange);color:var(--orange-dk);text-decoration:none}
+  .btn.primary{background:var(--orange);border-color:var(--orange);color:#fff}
+  .btn.primary:hover{background:var(--orange-dk);color:#fff}
+
+  section{padding:24px 0}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
+  .sec-head h2{font-size:23px}
+  .sec-head .count{font-size:13px;color:var(--faint)}
+  .eyebrow{font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--orange)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;transition:transform .15s, box-shadow .15s}
+  .card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(20,20,19,.12)}
+  .card h3{font-size:16.5px;margin-bottom:6px;word-break:break-word}
+  .card .desc{font-size:13.5px;color:var(--gray);flex:1;margin-bottom:14px}
+  .meta{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--faint);flex-wrap:wrap}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:-1px;background:var(--blue)}
+  .live-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--head);font-weight:600;font-size:11px;
+    color:var(--green);background:#eef3e7;padding:3px 9px;border-radius:99px}
+  .card .links{display:flex;gap:14px;margin-top:12px;font-size:13px;font-family:var(--head);font-weight:500}
+  .featured{border-left:4px solid var(--orange)}
+
+  .empty{color:var(--faint);font-size:14px;padding:18px 0}
+  .spin{display:inline-block;width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--orange);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-3px;margin-right:8px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  footer{padding:40px 0 60px;color:var(--faint);font-size:13px;border-top:1px solid var(--border);margin-top:30px}
+  @media(max-width:560px){.hero{padding-top:48px}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <img class="avatar" src="https://github.com/posixplus.png" alt="Jayakanthan" onerror="this.style.visibility='hidden'"/>
+    <div class="hero-txt">
+      <div class="eyebrow">Hello, I'm</div>
+      <h1>Jayakanthan</h1>
+      <div class="handle">@posixplus</div>
+      <!-- EDIT YOUR BIO HERE -->
+      <p class="bio" id="bio">I build with AI, automation, and the web. Below are my public projects and live sites — they update automatically straight from GitHub.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://github.com/posixplus" target="_blank" rel="noopener">GitHub profile</a>
+        <a class="btn" href="mailto:Jayakanthan@me.com">Email me</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="live-sec" hidden>
+    <div class="sec-head"><span class="eyebrow">Live</span><h2>Live sites</h2><span class="count" id="live-count"></span></div>
+    <div class="grid" id="live-grid"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">Code</span><h2>Projects</h2><span class="count" id="repo-count"></span></div>
+    <div class="grid" id="repo-grid"><div class="empty"><span class="spin"></span>Loading projects from GitHub…</div></div>
+  </section>
+
+  <footer>
+    Built with GitHub Pages · <a href="https://github.com/posixplus" target="_blank" rel="noopener">github.com/posixplus</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var USER="posixplus";
+  var langColors={JavaScript:"#f1e05a",TypeScript:"#3178c6",Python:"#3572A5",HTML:"#e34c26",CSS:"#563d7c",Shell:"#89e051",Go:"#00ADD8",Rust:"#dea584",Java:"#b07219","C++":"#f34b7d",C:"#555",Ruby:"#701516",Swift:"#F05138",Kotlin:"#A97BFF",Vue:"#41b883",Dart:"#00B4AB","Jupyter Notebook":"#DA5B0B"};
+  function esc(s){return (s==null?"":String(s)).replace(/[&<>"]/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c];});}
+  function liveUrl(r){ if(r.homepage && /^https?:\/\//.test(r.homepage)) return r.homepage; return "https://"+USER+".github.io/"+r.name+"/"; }
+
+  function card(r, featured){
+    var lang = r.language ? '<span><span class="dot" style="background:'+(langColors[r.language]||"#b0aea5")+'"></span>'+esc(r.language)+'</span>' : '';
+    var stars = r.stargazers_count ? '<span>★ '+r.stargazers_count+'</span>' : '';
+    var live = r.has_pages ? '<span class="live-badge">● Live</span>' : '';
+    var liveLink = r.has_pages ? '<a href="'+esc(liveUrl(r))+'" target="_blank" rel="noopener">Open site →</a>' : '';
+    return '<div class="card'+(featured?' featured':'')+'">'+
+      '<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">'+
+        '<h3>'+esc(r.name)+'</h3>'+live+'</div>'+
+      '<div class="desc">'+esc(r.description||"No description provided.")+'</div>'+
+      '<div class="meta">'+lang+stars+'<span>Updated '+new Date(r.pushed_at).toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"})+'</span></div>'+
+      '<div class="links"><a href="'+esc(r.html_url)+'" target="_blank" rel="noopener">View code →</a>'+liveLink+'</div>'+
+    '</div>';
+  }
+
+  function render(repos){
+    repos = repos.filter(function(r){ return !r.fork && !r.archived && r.name.toLowerCase()!==USER.toLowerCase()+".github.io"; });
+    repos.sort(function(a,b){ return new Date(b.pushed_at)-new Date(a.pushed_at); });
+
+    var live = repos.filter(function(r){ return r.has_pages; });
+    if(live.length){
+      document.getElementById("live-sec").hidden=false;
+      document.getElementById("live-grid").innerHTML = live.map(function(r){return card(r,true);}).join("");
+      document.getElementById("live-count").textContent = live.length+(live.length===1?" site":" sites");
+    }
+    var grid=document.getElementById("repo-grid");
+    if(!repos.length){ grid.innerHTML='<div class="empty">No public repositories yet.</div>'; return; }
+    grid.innerHTML = repos.map(function(r){return card(r,false);}).join("");
+    document.getElementById("repo-count").textContent = repos.length+(repos.length===1?" repository":" repositories");
+  }
+
+  fetch("https://api.github.com/users/"+USER+"/repos?per_page=100&sort=pushed")
+    .then(function(res){ if(!res.ok) throw new Error(res.status); return res.json(); })
+    .then(render)
+    .catch(function(err){
+      document.getElementById("repo-grid").innerHTML =
+        '<div class="empty">Could not load repositories right now (GitHub API limit or offline). '+
+        'Visit <a href="https://github.com/'+USER+'?tab=repositories" target="_blank" rel="noopener">github.com/'+USER+'</a> directly.</div>';
+    });
+})();
+</script>
+</body>
+</html>
