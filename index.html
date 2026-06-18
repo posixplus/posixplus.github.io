@@ -152,8 +152,8 @@
 <script>
 (function(){
   var USER="posixplus";
-  // repos to hide from the auto-listed grids (support pages, policies, or already featured above)
-  var EXCLUDE=["thirukkural-support","privacypolicy","allergai","ccaf-foundations-course"];
+  // only these repos are shown in the auto-listed grids (everything else is an empty placeholder)
+  var INCLUDE=["savesnakes","311rva-hack4rva"];
   var langColors={JavaScript:"#f1e05a",TypeScript:"#3178c6",Python:"#3572A5",HTML:"#e34c26",CSS:"#563d7c",Shell:"#89e051",Go:"#00ADD8",Rust:"#dea584",Java:"#b07219","C++":"#f34b7d",C:"#555",Ruby:"#701516",Swift:"#F05138",Kotlin:"#A97BFF",Vue:"#41b883",Dart:"#00B4AB","Jupyter Notebook":"#DA5B0B"};
   function esc(s){return (s==null?"":String(s)).replace(/[&<>"]/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c];});}
   function liveUrl(r){ if(r.homepage && /^https?:\/\//.test(r.homepage)) return r.homepage; return "https://"+USER+".github.io/"+r.name+"/"; }
@@ -173,11 +173,8 @@
   }
 
   function render(repos){
-    repos = repos.filter(function(r){
-      var n = r.name.toLowerCase();
-      return !r.fork && !r.archived && n!==USER.toLowerCase()+".github.io" && EXCLUDE.indexOf(n)===-1;
-    });
-    repos.sort(function(a,b){ return new Date(b.pushed_at)-new Date(a.pushed_at); });
+    repos = repos.filter(function(r){ return INCLUDE.indexOf(r.name.toLowerCase())!==-1; });
+    repos.sort(function(a,b){ return INCLUDE.indexOf(a.name.toLowerCase()) - INCLUDE.indexOf(b.name.toLowerCase()); });
 
     var live = repos.filter(function(r){ return r.has_pages; });
     if(live.length){
