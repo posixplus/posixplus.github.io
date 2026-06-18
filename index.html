@@ -64,6 +64,9 @@
   .featured-hero .fstat b{font-family:var(--head);color:var(--orange-dk)}
   .fcta{display:inline-flex;align-items:center;gap:8px;font-family:var(--head);font-weight:600;font-size:14px;background:var(--orange);color:#fff;padding:10px 18px;border-radius:10px}
   .featured-hero:hover .fcta{background:var(--orange-dk)}
+  .card .fcta{margin-top:14px;align-self:flex-start;padding:9px 15px;font-size:13px}
+  .card .fcta:hover{background:var(--orange-dk);text-decoration:none}
+  .card.featured .fstats{margin-bottom:0}
 
   .empty{color:var(--faint);font-size:14px;padding:18px 0}
   .spin{display:inline-block;width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--orange);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-3px;margin-right:8px}
@@ -91,7 +94,7 @@
   </header>
 
   <section id="featured-sec">
-    <div class="sec-head"><span class="eyebrow">Featured project</span></div>
+    <div class="sec-head"><span class="eyebrow">Featured</span><h2>Featured projects</h2></div>
     <a class="featured-hero" href="https://ai.learn2exel.com" target="_blank" rel="noopener">
       <h3>🤖 AI for Everyone — Learn AI, LLMs &amp; Claude</h3>
       <p class="fdesc">My flagship free, self-paced course that takes anyone from zero to building their own AI tools. It covers prompting, Claude Code, AI agents, MCP, and the Claude API — with role-specific examples for teachers, doctors, engineers, developers, students and more. It also ships a prompt library, an AI glossary, a Claude Code cheat sheet, and setup guides for every tool.</p>
@@ -103,6 +106,32 @@
       </div>
       <span class="fcta">Visit ai.learn2exel.com →</span>
     </a>
+
+    <div class="grid" style="margin-top:16px">
+      <div class="card featured">
+        <h3>🎓 Claude Certified Architect — Foundations</h3>
+        <div class="desc">A complete, free, video-style course to pass Anthropic's <b>Claude Certified Architect – Foundations</b> exam. 43 narrated lessons covering all five exam domains, plus scenario walkthroughs and hands-on labs — built straight from the official blueprint.</div>
+        <div class="fstats">
+          <span class="fstat"><b>5</b> domains</span>
+          <span class="fstat"><b>43</b> lessons</span>
+          <span class="fstat"><b>60</b> practice Qs</span>
+          <span class="fstat">timed mock exam</span>
+        </div>
+        <a class="fcta" href="https://posixplus.github.io/ccaf-foundations-course/" target="_blank" rel="noopener">Open the course →</a>
+      </div>
+
+      <div class="card featured">
+        <h3>📿 Thirukkural [Tamil/English] — iOS App</h3>
+        <div class="desc">A clean iOS app for the <b>Thirukkural</b>, the classic Tamil text of 1,330 couplets. Read every kural in Tamil with popular Tamil explanations and English translations by G.U. Pope, listen to Tamil/English audio for each verse, search instantly, and save your favorites.</div>
+        <div class="fstats">
+          <span class="fstat">Free</span>
+          <span class="fstat">iPhone · iPad · Mac</span>
+          <span class="fstat">Education</span>
+          <span class="fstat"><b>★ 5.0</b></span>
+        </div>
+        <a class="fcta" href="https://apps.apple.com/us/app/thirukkural-tamil-english/id6759541321" target="_blank" rel="noopener">Download on the App Store →</a>
+      </div>
+    </div>
   </section>
 
   <section id="live-sec" hidden>
@@ -123,6 +152,8 @@
 <script>
 (function(){
   var USER="posixplus";
+  // repos to hide from the auto-listed grids (support pages, policies, or already featured above)
+  var EXCLUDE=["thirukkural-support","privacypolicy","allergai","ccaf-foundations-course"];
   var langColors={JavaScript:"#f1e05a",TypeScript:"#3178c6",Python:"#3572A5",HTML:"#e34c26",CSS:"#563d7c",Shell:"#89e051",Go:"#00ADD8",Rust:"#dea584",Java:"#b07219","C++":"#f34b7d",C:"#555",Ruby:"#701516",Swift:"#F05138",Kotlin:"#A97BFF",Vue:"#41b883",Dart:"#00B4AB","Jupyter Notebook":"#DA5B0B"};
   function esc(s){return (s==null?"":String(s)).replace(/[&<>"]/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c];});}
   function liveUrl(r){ if(r.homepage && /^https?:\/\//.test(r.homepage)) return r.homepage; return "https://"+USER+".github.io/"+r.name+"/"; }
@@ -142,7 +173,10 @@
   }
 
   function render(repos){
-    repos = repos.filter(function(r){ return !r.fork && !r.archived && r.name.toLowerCase()!==USER.toLowerCase()+".github.io"; });
+    repos = repos.filter(function(r){
+      var n = r.name.toLowerCase();
+      return !r.fork && !r.archived && n!==USER.toLowerCase()+".github.io" && EXCLUDE.indexOf(n)===-1;
+    });
     repos.sort(function(a,b){ return new Date(b.pushed_at)-new Date(a.pushed_at); });
 
     var live = repos.filter(function(r){ return r.has_pages; });
